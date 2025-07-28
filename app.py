@@ -56,5 +56,5 @@ def calcular_integral():
         return jsonify({"error": f"Erro interno: {str(e)}"}), 500
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 5000))  # Usa a porta do Render
     app.run(host='0.0.0.0', port=port, debug=False)
