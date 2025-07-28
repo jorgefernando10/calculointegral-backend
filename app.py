@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from sympy import *
 from sympy.parsing.sympy_parser import parse_expr
 import traceback
+import os  # <-- ADICIONE ESTA LINHA
 
 app = Flask(__name__)
 x = symbols('x')
@@ -55,4 +56,5 @@ def calcular_integral():
         return jsonify({"error": f"Erro interno: {str(e)}"}), 500
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
